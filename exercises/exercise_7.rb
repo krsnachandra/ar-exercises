@@ -13,5 +13,8 @@ puts "----------"
 puts "Name a new store"
 store_from_user = gets.chomp
 
-Store.create(name: store_from_user)
-puts Store.errors.message
+s = Store.create(name: store_from_user)
+
+s.errors.messages.each do |column, error|
+  puts "#{column}: #{error[0]}"
+end
